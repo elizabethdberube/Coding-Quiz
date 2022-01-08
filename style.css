@@ -1,0 +1,53 @@
+  :root {
+    --green: #07f54e;
+    --blue:  #151c2f;
+    --grey: gray;
+  }
+
+  body {
+      background-color: var(--blue);
+  }
+  
+  /*Header Section */
+  .top {
+    color: var(--green);
+    text-align: center;
+    font-size: 62px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+
+  }
+
+  h2 {
+    color: var(--green);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+  }  
+  /* Quiz box */
+
+  .quiz-box {
+    max-width: 50%;
+    height: 30%;
+   box-shadow:inset 0px 0px 8px var(--green);
+   border-radius: 10px;
+   border-width: 5px;
+   margin: auto;
+
+
+  }
+
+  .btn {
+    color: var(--blue);
+    background-color: var(--grey);
+    text-align: center;
+    font-size: 24px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    display: inline-block; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 44%;
+    margin-right: 44%;
+    border: 2px solid var(--green);
+    box-shadow:inset 0px 0px 8px var(--green);
+    border-radius: 4px;
+  }
