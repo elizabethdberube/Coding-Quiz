@@ -2,6 +2,8 @@
     --green: #07f54e;
     --blue:  #151c2f;
     --grey: gray;
+    --white: white;
+    
   }
 
   body {
@@ -12,7 +14,7 @@
   .top {
     color: var(--green);
     text-align: center;
-    font-size: 62px;
+    font-size: 48px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
 
   }
@@ -21,8 +23,10 @@
     color: var(--green);
     text-align: center;
     font-size: 18px;
-    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    padding-bottom: 10px;
   }  
+
   /* Quiz box */
 
   .quiz-box {
@@ -32,13 +36,31 @@
    border-radius: 10px;
    border-width: 5px;
    margin: auto;
-
-
+   
   }
 
+  /*timer */
+
+  /*.timer {
+    color: var(--green);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding-top: 10px;
+  }
+
+  .timer-2 {
+    color: var(--green);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }*/
+  
+ /* button */
+
   .btn {
-    color: var(--blue);
-    background-color: var(--grey);
+    color: var(--white);
+    background-color: var(--green);
     text-align: center;
     font-size: 24px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
@@ -48,6 +70,26 @@
     margin-left: 44%;
     margin-right: 44%;
     border: 2px solid var(--green);
-    box-shadow:inset 0px 0px 8px var(--green);
-    border-radius: 4px;
+    box-shadow:inset 8px 8px 8px var(--green);
+    border-radius: 10px;
+  }
+
+  /*.btn-2 {
+    color: var(--white);
+    background-color: var(--green);
+    text-align: center;
+    font-size: 24px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    display: inline-block; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 46%;
+    margin-right: 46%;
+    border: 2px solid var(--green);
+    box-shadow:inset 8px 8px 8px var(--green);
+    border-radius: 10px;
+  } */
+
+  h2 {
+    margin: auto;
   }
