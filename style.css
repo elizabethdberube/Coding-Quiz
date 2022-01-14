@@ -39,6 +39,7 @@
    position: relative;
   }
 
+  /* Pagination */
   .change {
     position: absolute;
     z-index: 1;
@@ -51,24 +52,16 @@
     z-index: 2;
   }
 
-  /*timer */
-
-  /*.timer {
-    color: var(--green);
-    text-align: center;
-    font-size: 18px;
-    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    padding-top: 10px;
-  }
-
+ /* Timer */
   .timer-2 {
     color: var(--green);
     text-align: center;
     font-size: 18px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }*/
+  }
   
- /* button */
+
+/* Start Button */
 
   .btn {
     color: var(--white);

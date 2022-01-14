@@ -5,11 +5,12 @@ var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
 var changes = document.querySelectorAll(".change");
 var activeChange = document.querySelectorAll(".active-change");
+var timeCount = 120;
 let currentOne = 0;
 
 var questions = [{
 
-    question: "question?",
+    question: "question 1?",
     answers: {
         a: "answer",
         b: "answer",
@@ -19,7 +20,7 @@ var questions = [{
     correct: "c"
 },
 {
-    question: "question?",
+    question: "question 2?",
     answers: {
         a: "answer",
         b: "answer",
@@ -28,7 +29,7 @@ var questions = [{
     correct: "c"
 },
 {
-    question: "question?",
+    question: "question 3?",
     answers: {
         a: "answer",
         b: "answer",
@@ -37,7 +38,7 @@ var questions = [{
     correct: "c"
 },
 {
-    question: "question?",
+    question: "question 4?",
     answers: {
         a: "answer",
         b: "answer",
@@ -46,7 +47,7 @@ var questions = [{
     correct: "c"
 },
 {
-    question: "question?",
+    question: "question 5?",
     answers: {
         a: "answer",
         b: "answer",
@@ -57,6 +58,28 @@ var questions = [{
 
 ];
 
+function theTimer() {
+
+
+    var timeIt = setInterval(function () {
+
+        if (timeCount > 1) {
+            quizTimer.textContent = timeCount + 'seconds remaining';
+            timeCount--;
+
+        }
+
+        else if (timeCount === 1) {
+            quizTimer.textContent = timeCount + 'seconds remaining';
+        }
+        else {
+            quizTimer.textContent = '';
+            clearInterval(timeIt);
+
+
+        }
+    }, 1000);
+}
 
 
 
@@ -108,9 +131,11 @@ function theResults() {
             numAmount++;
 
             answersBox[questionAmount].style.color = '#e7f709';
+
         }
         else {
             answersBox[questionAmount].style.color = 'red';
+            timeCount - 10;
         }
     });
 
@@ -125,21 +150,19 @@ function theSlide(n) {
     currentOne = n;
     if (currentOne >= 0) {
         changes[currentOne].classList.remove('activeChange');
+
     };
 }
 
 
 
-
-console.log(codeQuiz);
-console.log(theResults);
-
 codeQuiz();
 
+
 start.addEventListener("click", function () {
-    theSlide(0);
+    theSlide(0), theTimer(), theResults();
 });
 
-submit.addEventListener('click', theResults);
+
 
 
