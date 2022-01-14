@@ -1,10 +1,14 @@
 
 var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
-var submit = document.getElementById('submit');
-
+var quizTimer = document.getElementById('timer');
+var start = document.getElementById('start');
+var changes = document.querySelectorAll(".change");
+var activeChange = document.querySelectorAll(".active-change");
+let currentOne = 0;
 
 var questions = [{
+
     question: "question?",
     answers: {
         a: "answer",
@@ -52,6 +56,10 @@ var questions = [{
 },
 
 ];
+
+
+
+
 function codeQuiz() {
 
     var output = [];
@@ -73,17 +81,18 @@ function codeQuiz() {
             }
 
             output.push(
-                `<div class="question"> ${theQuestion.questions} </div>
-        <div class="answers"> ${answers.join('')} </div>`
+                `<div class="change"> <div class="question"> ${theQuestion.questions} </div>
+        <div class="answers"> ${answers.join('')} </div>
+        </div>`
             );
         }
-    );
 
+    );
 
     quizBox.innerHTML = output.join('');
 }
 
-submit.addEventListener('click', theResults);
+
 
 function theResults() {
     var answersBox = quizBox.querySelectorAll('.answers');
@@ -108,12 +117,29 @@ function theResults() {
     resultsBox.innerHTML = `${numAmount} out of ${questions.length}`;
 
 }
+
+
+function theSlide(n) {
+
+    changes[n].classList.add('activeChange');
+    currentOne = n;
+    if (currentOne >= 0) {
+        changes[currentOne].classList.remove('activeChange');
+    };
+}
+
+
+
+
 console.log(codeQuiz);
 console.log(theResults);
 
 codeQuiz();
 
+start.addEventListener("click", function () {
+    theSlide(0);
+});
 
-
+submit.addEventListener('click', theResults);
 
 
