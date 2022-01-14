@@ -3,11 +3,12 @@ var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
-var changes = document.querySelectorAll(".change");
-var activeChange = document.querySelectorAll(".active-change");
+
+var activeChange = document.querySelectorAll(".activeChange");
 var timeCount = 120;
 let currentOne = 0;
 
+// Array 
 var questions = [{
 
     question: "question 1?",
@@ -58,19 +59,21 @@ var questions = [{
 
 ];
 
+// Timer function
+
 function theTimer() {
 
 
     var timeIt = setInterval(function () {
 
         if (timeCount > 1) {
-            quizTimer.textContent = timeCount + 'seconds remaining';
+            quizTimer.textContent = timeCount + ' seconds remaining';
             timeCount--;
 
         }
 
         else if (timeCount === 1) {
-            quizTimer.textContent = timeCount + 'seconds remaining';
+            quizTimer.textContent = timeCount + ' seconds remaining';
         }
         else {
             quizTimer.textContent = '';
@@ -82,8 +85,8 @@ function theTimer() {
 }
 
 
-
-function codeQuiz() {
+// loop and radio buttons
+function setupCodeQuiz() {
 
     var output = [];
 
@@ -104,7 +107,7 @@ function codeQuiz() {
             }
 
             output.push(
-                `<div class="change"> <div class="question"> ${theQuestion.questions} </div>
+                `<div class="change"> <div class="question"> ${theQuestion.question} </div>
         <div class="answers"> ${answers.join('')} </div>
         </div>`
             );
@@ -113,54 +116,72 @@ function codeQuiz() {
     );
 
     quizBox.innerHTML = output.join('');
+
+    for (element of document.querySelectorAll('.change')) {
+
+        element.addEventListener("click", theResults)
+    };
 }
 
-
+// Function for scoring 
 
 function theResults() {
     var answersBox = quizBox.querySelectorAll('.answers');
     let numAmount = 0;
+    var questionAmount = currentOne;
 
-    questions.forEach((theQuestion, questionAmount) => {
-        var answerBox = answersBox[questionAmount];
-        var select = `input[name=question${questionAmount}]:checked`;
-        var userInput = (answerBox.querySelector(select) || {}).value;
+    var theQuestion = questions[currentOne];
+    var answerBox = answersBox[questionAmount];
+    var select = `input[name=question${questionAmount}]:checked`;
+    var userInput = (answerBox.querySelector(select) || {}).value;
 
-        if (userInput === theQuestion.correct) {
+    if (userInput === theQuestion.correct) {
 
-            numAmount++;
+        numAmount++;
 
-            answersBox[questionAmount].style.color = '#e7f709';
+        answersBox[questionAmount].style.color = '#07f54e';
 
-        }
-        else {
-            answersBox[questionAmount].style.color = 'red';
-            timeCount - 10;
-        }
-    });
+    }
+    else {
+        answersBox[questionAmount].style.color = 'red';
+        timeCount -= 10;
+    }
 
-    resultsBox.innerHTML = `${numAmount} out of ${questions.length}`;
 
+    resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
+    showSlide(currentOne + 1);
 }
 
+// Function for pagination
 
-function theSlide(n) {
+function showSlide(n) {
+    var changes = document.querySelectorAll(".change");
+    console.log(changes);
+    console.log(n);
 
-    changes[n].classList.add('activeChange');
-    currentOne = n;
+    if (n == questions.length) {
+        showScores();
+        return;
+    }
     if (currentOne >= 0) {
         changes[currentOne].classList.remove('activeChange');
-
     };
+    changes[n].classList.add('activeChange');
+    currentOne = n;
+
+
+
+
 }
 
 
 
-codeQuiz();
-
+setupCodeQuiz();
 
 start.addEventListener("click", function () {
-    theSlide(0), theTimer(), theResults();
+    showSlide(0);
+    theTimer();
+
 });
 
 
