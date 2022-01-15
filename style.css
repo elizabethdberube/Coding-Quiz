@@ -30,13 +30,13 @@
   /* Quiz box */
 
   .quiz-box {
-    max-width: 50%;
-    height: 30%;
-   box-shadow:inset 0px 0px 8px var(--green);
+    max-width: 70%;
+    height: 300px;
+   box-shadow:inset 0px 0px 20px var(--green);
    border-radius: 10px;
-   border-width: 5px;
+   border-width: 20px;
    margin: auto;
-   /*position: relative;*/
+   position: relative;
   }
 
   /* Pagination */
@@ -50,6 +50,12 @@
   .change.activeChange {
     opacity: 1;
     z-index: 2;
+    color:white; 
+    text-align: center;
+    font-size: 18px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
  /* Timer */
@@ -76,6 +82,26 @@
     border: 2px solid var(--green);
     box-shadow:inset 8px 8px 8px var(--green);
     border-radius: 10px;
+  }
+  .score {
+    color: var(--green);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+
+  .boxy {
+   box-shadow:inset 0px 0px 8px var(--green);
+   border-radius: 10px;
+   border-width: 5px;
+   padding-top: 100px;
+   height: 200px;
+   width:  200px;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: 50px ;
   }
 
   h2 {

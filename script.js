@@ -8,54 +8,45 @@ var activeChange = document.querySelectorAll(".activeChange");
 var timeCount = 120;
 let currentOne = 0;
 
-// Array 
+// Questions array 
 var questions = [{
 
-    question: "question 1?",
+    question: "What are variables an example of?",
     answers: {
-        a: "answer",
-        b: "answer",
-        c: "answer"
+        A: "How colors can vary from screen to screen",
+        B: "The speed variable",
+        C: "Programming identifiers"
     },
 
-    correct: "c"
+    correct: "A"
 },
 {
-    question: "question 2?",
+    question: "What does HTML stand for?",
     answers: {
-        a: "answer",
-        b: "answer",
-        c: "answer"
+        A: "Highlighted text made longer",
+        B: "Hidden text marking length",
+        C: "Hypertext markup language"
     },
-    correct: "c"
+    correct: "C"
 },
 {
-    question: "question 3?",
+    question: "What three things define an object?",
     answers: {
-        a: "answer",
-        b: "answer",
-        c: "answer"
+        A: "Properties, attributes, and methods",
+        B: "Programming, attributes, and methods",
+        C: "Properties, alterations, and methods"
     },
-    correct: "c"
+    correct: "A"
 },
 {
-    question: "question 4?",
+    question: "In a program, what does a loop do?",
     answers: {
-        a: "answer",
-        b: "answer",
-        c: "answer"
+        A: "It attaches your CSS sheet to an HTML file through a series of loops",
+        B: "It loops through all your code looking for spelling errors",
+        C: "A loop performs instructions until a condition is met"
     },
-    correct: "c"
-},
-{
-    question: "question 5?",
-    answers: {
-        a: "answer",
-        b: "answer",
-        c: "answer"
-    },
-    correct: "c"
-},
+    correct: "C"
+}
 
 ];
 
@@ -78,7 +69,6 @@ function theTimer() {
         else {
             quizTimer.textContent = '';
             clearInterval(timeIt);
-
 
         }
     }, 1000);
@@ -135,20 +125,22 @@ function theResults() {
     var select = `input[name=question${questionAmount}]:checked`;
     var userInput = (answerBox.querySelector(select) || {}).value;
 
+
     if (userInput === theQuestion.correct) {
 
         numAmount++;
 
-        answersBox[questionAmount].style.color = '#07f54e';
+
 
     }
     else {
-        answersBox[questionAmount].style.color = 'red';
+
         timeCount -= 10;
     }
 
 
     resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
+    answersBox[questionAmount].style.color = '';
     showSlide(currentOne + 1);
 }
 
