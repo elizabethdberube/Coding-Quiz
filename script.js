@@ -3,19 +3,20 @@ var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
-
+var saveButton = document.getElementById('save-button');
 var activeChange = document.querySelectorAll(".activeChange");
 var timeCount = 120;
 let currentOne = 0;
+let numAmount = 0;
 
 // Questions array 
 var questions = [{
 
     question: "What are variables an example of?",
     answers: {
-        A: "How colors can vary from screen to screen",
+        A: "Programming identifiers",
         B: "The speed variable",
-        C: "Programming identifiers"
+        C: "How colors can vary from screen to screen"
     },
 
     correct: "A"
@@ -72,6 +73,7 @@ function theTimer() {
 
         }
     }, 1000);
+
 }
 
 
@@ -98,7 +100,7 @@ function setupCodeQuiz() {
 
             output.push(
                 `<div class="change"> <div class="question"> ${theQuestion.question} </div>
-        <div class="answers"> ${answers.join('')} </div>
+        <div class="answers"> ${answers.join("")} </div>
         </div>`
             );
         }
@@ -117,9 +119,7 @@ function setupCodeQuiz() {
 
 function theResults() {
     var answersBox = quizBox.querySelectorAll('.answers');
-    let numAmount = 0;
     var questionAmount = currentOne;
-
     var theQuestion = questions[currentOne];
     var answerBox = answersBox[questionAmount];
     var select = `input[name=question${questionAmount}]:checked`;
@@ -130,12 +130,13 @@ function theResults() {
 
         numAmount++;
 
-
+        answersBox[questionAmount].style.color = '#07f54e';
 
     }
     else {
-
+        answersBox[questionAmount].style.color = 'red';
         timeCount -= 10;
+
     }
 
 
@@ -147,24 +148,42 @@ function theResults() {
 // Function for pagination
 
 function showSlide(n) {
+
     var changes = document.querySelectorAll(".change");
     console.log(changes);
     console.log(n);
 
-    if (n == questions.length) {
-        showScores();
-        return;
-    }
+    // if (n == questions.length) {
+    //  showScores();
+    // return;
+    //}
     if (currentOne >= 0) {
         changes[currentOne].classList.remove('activeChange');
     };
     changes[n].classList.add('activeChange');
     currentOne = n;
-
-
-
-
 }
+
+
+
+
+function showScores() {
+    document.getElementById("end-box").style.display = 'block';
+}
+
+saveButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var playerName = document.querySelector("#save-button").value;
+
+    if (playerName === "") {
+        displayMessage("error", "Initials can not be blank");
+    } else {
+        displayMessage("success", playerName + numAmount);
+    }
+
+});
+
 
 
 
@@ -173,6 +192,7 @@ setupCodeQuiz();
 start.addEventListener("click", function () {
     showSlide(0);
     theTimer();
+
 
 });
 
