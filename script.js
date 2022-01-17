@@ -4,7 +4,6 @@ var resultsBox = document.getElementById('results');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
 var saveButton = document.getElementById('save_button');
-var endButton = document.getElementById('end-button');
 var activeChange = document.querySelectorAll(".activeChange");
 var msgDiv = document.querySelector("#message");
 var initials = document.querySelector("#initials");
@@ -16,9 +15,9 @@ let numAmount = 0;
 // Questions array 
 var questions = [{
 
-    question: "What are variables an example of?",
+    question: "What are variables used for in JavaScript Programs?",
     answers: {
-        A: "Programming identifiers",
+        A: "Storing numbers, dates, or other values",
         B: "The speed variable",
         C: "How colors can vary from screen to screen"
     },
@@ -26,31 +25,39 @@ var questions = [{
     correct: "A"
 },
 {
-    question: "What does HTML stand for?",
+    question: "Why do JavaScript and Java have similar name?",
     answers: {
-        A: "Highlighted text made longer",
-        B: "Hidden text marking length",
-        C: "Hypertext markup language"
+        A: "JavaScript is a stripped-down version of Java",
+        B: "JavaScript's syntax is loosely based on Java's",
+        C: "Both of creators really liked coffee"
+    },
+    correct: "B"
+},
+{
+    question: "What is the correct JavaScript syntax to write \"Hello World\"?",
+    answers: {
+        A: "System.out.println(\"Hello World\")",
+        B: "println (\"Hello World\")",
+        C: "document.write(\"Hello World\")"
     },
     correct: "C"
 },
 {
-    question: "What three things define an object?",
+    question: "Is it possible to nest functions in JavaScript?",
     answers: {
-        A: "Properties, attributes, and methods",
-        B: "Programming, attributes, and methods",
-        C: "Properties, alterations, and methods"
+        A: "True",
+        B: "False"
     },
     correct: "A"
 },
 {
-    question: "In a program, what does a loop do?",
+    question: "Which of the following variables takes precedence over the others if the names are the same?",
     answers: {
-        A: "It attaches your CSS sheet to an HTML file through a series of loops",
-        B: "It loops through all your code looking for spelling errors",
-        C: "A loop performs instructions until a condition is met"
+        A: "Global variable",
+        B: "The local variable",
+        C: "None of the above"
     },
-    correct: "C"
+    correct: "B"
 }
 
 ];
@@ -151,7 +158,7 @@ function theResults() {
     showSlide(currentOne + 1);
 };
 
-// Function for pagination
+// Function for displaying array
 
 function showSlide(n) {
 
@@ -179,14 +186,14 @@ function showScores() {
 
 };
 
-
+// Functions for player saving initials and score
 function displayMessage(type, message) {
     msgDiv.textContent = message;
     msgDiv.setAttribute("class", type);
 
 }
 
-// Functions for player saving initials and score
+
 function savedInitials() {
     var initials = localStorage.getItem("initials");
     var score = localStorage.getItem("numAmount");
@@ -194,7 +201,7 @@ function savedInitials() {
     if (!initials || !score) {
         return;
     }
-    displayInitials.textContent = initials;
+    textContent = initials;
 
 }
 

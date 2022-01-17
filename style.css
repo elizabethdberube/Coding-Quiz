@@ -1,7 +1,6 @@
   :root {
     --green: #07f54e;
     --blue:  #151c2f;
-    --grey: gray;
     --white: white;
     
   }
@@ -25,6 +24,7 @@
     font-size: 18px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
     padding-bottom: 10px;
+    margin: auto;
   }  
 
   /* Quiz box */
@@ -51,7 +51,7 @@
 
   }
 
-  /* Pagination */
+  /* Displaying array */
   .change {
     position: absolute;
     left: 0px;
@@ -119,9 +119,6 @@
    margin-top: 50px ;
   }
 
-  h2 {
-    margin: auto;
-  }
  
   /* Score box at end */
   
@@ -131,14 +128,18 @@
     font-size: 24px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     padding: 15px;
+    margin-left: 30px;
   }
 
   .end-button {
     color: var(--white);
     background-color: var(--green);
+    border: 2px solid var(--green);
+    box-shadow:inset 8px 8px 8px var(--green);
+    border-radius: 10px;
     text-align: center;
     font-size: 24px;
-    margin: auto;
+    margin-left: 10px;
     font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   }
 
