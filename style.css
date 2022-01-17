@@ -50,7 +50,7 @@
     transition: opacity 0.5s;
   }
 
-  .change.activeChange {
+  .activeChange {
     opacity: 1;
     z-index: 2;
     color:white; 
@@ -110,7 +110,33 @@
   h2 {
     margin: auto;
   }
+ 
+  /* Score box at end */
+  
+  .the-end {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding: 15px;
+  }
 
-  .name-box{
-  display: none;
+  .end-button {
+    color: var(--white);
+    background-color: var(--green);
+    text-align: center;
+    font-size: 24px;
+    margin: auto;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  }
+
+  #initials {
+    margin: auto;
+  }
+
+   #message {
+    color: var(--green);
+    text-align: center;
+    font-size: 24px;
+    font-family: 'roboto','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   }

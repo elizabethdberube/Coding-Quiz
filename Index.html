@@ -16,13 +16,16 @@
     </div>
 
     <!--button and IDs -->
-    <div class="quiz-box" id="quiz">
-        <div style="display:none">All done!!</div>
-        <label style="display:none" for="intials">Enter Intials</label>
-        <input style="display:none" name="intials" placeholder="EL" />
-        <button style="display:none" id="save-button">Save</button>
+    <div class="quiz-box" id="quiz"></div>
+    <div id="victoryscreen" style="display:none">
+        <div class="the-end">Game is over!!</div>
+        <label for="intials" class="the-end">Enter Intials</label>
+        <input type="text" name="intials" id="initials" placeholder="EB" />
+        <button id="save_button" class="end-button">Save</button>
+        <div id="message"></div>
+        <div id="dis-initials"></div>
     </div>
-    <button class="btn" id="start">Start</button>
+    <button style="display:block" class="btn" id="start">Start</button>
 
 
 
@@ -32,5 +35,5 @@
         <div id="results" class="score"></div>
     </div>
     <script src="./script.js"></script>
-    <div></div>
+
 </body>

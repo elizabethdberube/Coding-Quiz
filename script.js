@@ -3,9 +3,13 @@ var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
-var saveButton = document.getElementById('save-button');
+var saveButton = document.getElementById('save_button');
+var endButton = document.getElementById('end-button');
 var activeChange = document.querySelectorAll(".activeChange");
-var timeCount = 120;
+var msgDiv = document.querySelectorAll("#message");
+var initials = document.querySelectorAll("#initials");
+var displayInitials = document.querySelectorAll("#dis-initials");
+var timeCount = 60;
 let currentOne = 0;
 let numAmount = 0;
 
@@ -77,7 +81,7 @@ function theTimer() {
 }
 
 
-// loop and radio buttons
+// Loop and radio buttons
 function setupCodeQuiz() {
 
     var output = [];
@@ -87,7 +91,9 @@ function setupCodeQuiz() {
 
             var answers = [];
 
-            for (letter in theQuestion.answers) {
+            for (letter in theQuestion.answers)
+
+
 
                 answers.push(
                     `<label> 
@@ -96,7 +102,7 @@ function setupCodeQuiz() {
               ${theQuestion.answers[letter]}
               </label>`
                 );
-            }
+
 
             output.push(
                 `<div class="change"> <div class="question"> ${theQuestion.question} </div>
@@ -109,7 +115,7 @@ function setupCodeQuiz() {
 
     quizBox.innerHTML = output.join('');
 
-    for (element of document.querySelectorAll('.change')) {
+    for (element of document.querySelectorAll('.change input')) {
 
         element.addEventListener("click", theResults)
     };
@@ -125,25 +131,28 @@ function theResults() {
     var select = `input[name=question${questionAmount}]:checked`;
     var userInput = (answerBox.querySelector(select) || {}).value;
 
+    console.log("bob");
 
     if (userInput === theQuestion.correct) {
 
         numAmount++;
 
-        answersBox[questionAmount].style.color = '#07f54e';
+        answersBox[questionAmount];
 
     }
     else {
-        answersBox[questionAmount].style.color = 'red';
+        answersBox[questionAmount];
+
         timeCount -= 10;
 
     }
 
-
+    localStorage.setItem("numAmount", numAmount);
     resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
+
     answersBox[questionAmount].style.color = '';
     showSlide(currentOne + 1);
-}
+};
 
 // Function for pagination
 
@@ -153,35 +162,58 @@ function showSlide(n) {
     console.log(changes);
     console.log(n);
 
-    // if (n == questions.length) {
-    //  showScores();
-    // return;
-    //}
+    if (n >= questions.length) {
+        showScores();
+        return;
+    }
     if (currentOne >= 0) {
         changes[currentOne].classList.remove('activeChange');
     };
     changes[n].classList.add('activeChange');
     currentOne = n;
+};
+
+
+
+// Turn elements into block
+function showScores() {
+    document.getElementById("victoryscreen").style.display = 'block';
+    timeCount = 0;
+
+};
+
+
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+
 }
 
-
-
-
-function showScores() {
-    document.getElementById("end-box").style.display = 'block';
+// Functions for player saving initials and score
+function savedInitials() {
+    var initials = localStorage.getItem("initials");
+    var score = localStorage.getItem("numAmount");
+    if (!initials || !score) {
+        return;
+    }
+    displayInitials.textContent = initials;
+    displayInitials.textContent = score;
 }
 
 saveButton.addEventListener("click", function (event) {
     event.preventDefault();
 
-    var playerName = document.querySelector("#save-button").value;
+    var playerName = document.querySelector("#initials").value;
 
     if (playerName === "") {
         displayMessage("error", "Initials can not be blank");
     } else {
-        displayMessage("success", playerName + numAmount);
-    }
+        displayMessage("success", initials + numAmount);
 
+        localStorage.setItem("initials", initials);
+        localStorage.setItem("initials", numAmount);
+        savedInitials();
+    }
 });
 
 
@@ -192,8 +224,7 @@ setupCodeQuiz();
 start.addEventListener("click", function () {
     showSlide(0);
     theTimer();
-
-
+    document.getElementById("start").style.display = 'none';
 });
 
 
