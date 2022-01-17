@@ -39,6 +39,18 @@
    position: relative;
   }
 
+  /*radio buttons*/
+  .block {
+    display: block;
+    padding: 20px;
+    
+  }
+
+  .question {
+    padding-top: 1%;
+
+  }
+
   /* Pagination */
   .change {
     position: absolute;

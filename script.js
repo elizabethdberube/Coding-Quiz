@@ -6,9 +6,9 @@ var start = document.getElementById('start');
 var saveButton = document.getElementById('save_button');
 var endButton = document.getElementById('end-button');
 var activeChange = document.querySelectorAll(".activeChange");
-var msgDiv = document.querySelectorAll("#message");
-var initials = document.querySelectorAll("#initials");
-var displayInitials = document.querySelectorAll("#dis-initials");
+var msgDiv = document.querySelector("#message");
+var initials = document.querySelector("#initials");
+
 var timeCount = 60;
 let currentOne = 0;
 let numAmount = 0;
@@ -60,22 +60,19 @@ var questions = [{
 function theTimer() {
 
 
-    var timeIt = setInterval(function () {
+    setInterval(function () {
 
-        if (timeCount > 1) {
+        if (timeCount > 0) {
             quizTimer.textContent = timeCount + ' seconds remaining';
             timeCount--;
 
         }
 
-        else if (timeCount === 1) {
+        else if (timeCount === 0) {
             quizTimer.textContent = timeCount + ' seconds remaining';
+            showScores();
         }
-        else {
-            quizTimer.textContent = '';
-            clearInterval(timeIt);
 
-        }
     }, 1000);
 
 }
@@ -96,7 +93,7 @@ function setupCodeQuiz() {
 
 
                 answers.push(
-                    `<label> 
+                    `<label class="block"> 
               <input type="radio" name="question${questionAmount}" value="${letter}">
               ${letter} :
               ${theQuestion.answers[letter]}
@@ -131,15 +128,15 @@ function theResults() {
     var select = `input[name=question${questionAmount}]:checked`;
     var userInput = (answerBox.querySelector(select) || {}).value;
 
-    console.log("bob");
+
 
     if (userInput === theQuestion.correct) {
 
         numAmount++;
 
         answersBox[questionAmount];
-
     }
+
     else {
         answersBox[questionAmount];
 
@@ -193,11 +190,12 @@ function displayMessage(type, message) {
 function savedInitials() {
     var initials = localStorage.getItem("initials");
     var score = localStorage.getItem("numAmount");
+
     if (!initials || !score) {
         return;
     }
     displayInitials.textContent = initials;
-    displayInitials.textContent = score;
+
 }
 
 saveButton.addEventListener("click", function (event) {
@@ -208,7 +206,7 @@ saveButton.addEventListener("click", function (event) {
     if (playerName === "") {
         displayMessage("error", "Initials can not be blank");
     } else {
-        displayMessage("success", initials + numAmount);
+        displayMessage("success", initials.value + " " + "your score is: " + numAmount);
 
         localStorage.setItem("initials", initials);
         localStorage.setItem("initials", numAmount);
