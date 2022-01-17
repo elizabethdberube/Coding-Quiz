@@ -10,6 +10,6 @@ Features of this application:
 5. At this time the student can enter their initials and this will be saved with the student’s score.
 
 Link to page: 
-
+https://elizabethdberube.github.io/Coding-Quiz/
 
 ![image](/assets/Screenshot.png)
