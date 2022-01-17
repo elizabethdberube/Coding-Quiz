@@ -12,4 +12,4 @@ Features of this application:
 Link to page: 
 
 
-![image](/assets/codegame.png)
+![image](/assets/Screenshot.png)
