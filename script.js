@@ -29,7 +29,7 @@ var questions = [{
     answers: {
         A: "JavaScript is a stripped-down version of Java",
         B: "JavaScript's syntax is loosely based on Java's",
-        C: "Both of creators really liked coffee"
+        C: "Both of the creators really liked coffee"
     },
     correct: "B"
 },
