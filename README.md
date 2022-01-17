@@ -1,7 +1,7 @@
 # Coding-Quiz
-Application for testing students' knowledge of JavaScript.
+Website for testing students' knowledge of JavaScript.
  
-Features of this application:
+Features of this website:
  
 1. The timed test begins when the student selects the start button.
 2. Once the answer to the given question is selected then the next question will appear.
