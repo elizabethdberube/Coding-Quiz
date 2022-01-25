@@ -1,7 +1,6 @@
 
 var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
-var finalInitials = document.getElementById('final-initials');
 var highScores = document.getElementById('high-scores');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
@@ -149,17 +148,16 @@ function theResults() {
 
         answersBox[questionAmount];
     }
+    // if (theQuestion == 4) {
+    //  theScores.push(numAmount);
+    //    localStorage.setItem("myScore", JSON.stringify(theScores));
+
+    //  }
 
     else {
         answersBox[questionAmount];
 
         timeCount -= 10;
-
-    }
-
-    if (theQuestion == 4) {
-        theScores.push(numAmount);
-        localStorage.setItem("myScore", JSON.stringify(theScores));
 
     }
 
@@ -226,6 +224,8 @@ saveButton.addEventListener("click", function (event) {
     } else {
         theInitials.push(playerName);
         localStorage.setItem("myInitials", JSON.stringify(theInitials));
+        theScores.push(numAmount);
+        localStorage.setItem("myScore", JSON.stringify(theScores))
         displayMessage("success", playerName + " " + "your score is: " + numAmount);
 
 
@@ -233,25 +233,24 @@ saveButton.addEventListener("click", function (event) {
     }
 });
 
-//window.onload = 
+window.onload = function playersHighScores() {
+    highScores.innerHTML = '';
 
-function playersHighScores() {
     for (var i = 0; i < theInitials.length; i++) {
-        finalInitials.textContent = "Players initials: " + theInitials[i];
+        highScores.innerHTML += theInitials[i] + "your score is " + theScores[i];
 
     }
-
-    for (var i = 0; i < theScores.length; i++) {
-        highScores.innerHTML = `"Players score: "${theScores[i]}`;
-
-    }
+    console.log(theInitials, theScores);
 }
 
 
 
 
+
 setupCodeQuiz();
-playersHighScores();
+
+//Items are in array and local storage. 
+//HAve start button reappear at end then when you hit start it clears and starts
 
 start.addEventListener("click", function () {
     showSlide(0);
