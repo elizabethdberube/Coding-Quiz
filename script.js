@@ -1,6 +1,8 @@
 
 var quizBox = document.getElementById('quiz');
 var resultsBox = document.getElementById('results');
+var finalInitials = document.getElementById('final-initials');
+var highScores = document.getElementById('high-scores');
 var quizTimer = document.getElementById('timer');
 var start = document.getElementById('start');
 var saveButton = document.getElementById('save_button');
@@ -8,11 +10,13 @@ var activeChange = document.querySelectorAll(".activeChange");
 var msgDiv = document.querySelector("#message");
 var initials = document.querySelector("#initials");
 var storedScores;
+var storedInitials;
 var timeCount = 60;
 let currentOne = 0;
 let numAmount = 0;
 
 var theScores = [];
+var theInitials = [];
 
 // Questions array 
 var questions = [{
@@ -153,12 +157,13 @@ function theResults() {
 
     }
 
+    if (theQuestion == 4) {
+        theScores.push(numAmount);
+        localStorage.setItem("myScore", JSON.stringify(theScores));
+
+    }
 
     answersBox[questionAmount].style.color = '';
-
-    theScores.push(numAmount);
-    localStorage.setItem("myScore", JSON.stringify(theScores));
-    storedScores = JSON.parse(localStorage.getItem("myScore"));
     resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
     showSlide(currentOne + 1);
 }
@@ -186,8 +191,7 @@ function showSlide(n) {
 };
 
 
-
-// Turn elements into block
+// Turns elements into block
 function showScores() {
     document.getElementById("victoryscreen").style.display = 'block';
     timeCount = 0;
@@ -201,15 +205,14 @@ function displayMessage(type, message) {
 
 }
 
-
 function savedInitials() {
-    var initials = localStorage.getItem("initials");
-    var score = localStorage.getItem("numAmount");
+    storedInitials = JSON.parse(localStorage.getItem("myInitials"));
+    storedScores = JSON.parse(localStorage.getItem("myScore"));
 
-    if (!initials || !score) {
+    if (!storedInitials || !storedScores) {
         return;
     }
-    textContent = initials;
+    textContent = storedInitials;
 
 }
 
@@ -221,20 +224,34 @@ saveButton.addEventListener("click", function (event) {
     if (playerName === "") {
         displayMessage("error", "Initials can not be blank");
     } else {
-        displayMessage("success", initials.value + " " + "your score is: " + storedScores);
+        theInitials.push(playerName);
+        localStorage.setItem("myInitials", JSON.stringify(theInitials));
+        displayMessage("success", playerName + " " + "your score is: " + numAmount);
 
-        localStorage.setItem("initials", initials);
 
-
-        //localStorage.setItem("initials", numAmount);
         savedInitials();
     }
 });
+
+//window.onload = 
+
+function playersHighScores() {
+    for (var i = 0; i < theInitials.length; i++) {
+        finalInitials.textContent = "Players initials: " + theInitials[i];
+
+    }
+
+    for (var i = 0; i < theScores.length; i++) {
+        highScores.innerHTML = `"Players score: "${theScores[i]}`;
+
+    }
+}
 
 
 
 
 setupCodeQuiz();
+playersHighScores();
 
 start.addEventListener("click", function () {
     showSlide(0);
