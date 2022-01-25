@@ -7,10 +7,12 @@ var saveButton = document.getElementById('save_button');
 var activeChange = document.querySelectorAll(".activeChange");
 var msgDiv = document.querySelector("#message");
 var initials = document.querySelector("#initials");
-
+var storedScores;
 var timeCount = 60;
 let currentOne = 0;
 let numAmount = 0;
+
+var theScores = [];
 
 // Questions array 
 var questions = [{
@@ -151,12 +153,18 @@ function theResults() {
 
     }
 
-    localStorage.setItem("numAmount", numAmount);
-    resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
 
     answersBox[questionAmount].style.color = '';
+
+    theScores.push(numAmount);
+    localStorage.setItem("myScore", JSON.stringify(theScores));
+    storedScores = JSON.parse(localStorage.getItem("myScore"));
+    resultsBox.innerHTML = `${numAmount} out of ${questions.length} correct`;
     showSlide(currentOne + 1);
-};
+}
+
+
+
 
 // Function for displaying array
 
@@ -213,10 +221,12 @@ saveButton.addEventListener("click", function (event) {
     if (playerName === "") {
         displayMessage("error", "Initials can not be blank");
     } else {
-        displayMessage("success", initials.value + " " + "your score is: " + numAmount);
+        displayMessage("success", initials.value + " " + "your score is: " + storedScores);
 
         localStorage.setItem("initials", initials);
-        localStorage.setItem("initials", numAmount);
+
+
+        //localStorage.setItem("initials", numAmount);
         savedInitials();
     }
 });
