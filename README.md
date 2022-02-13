@@ -1,6 +1,7 @@
 # Coding-Quiz
 Website for testing students' knowledge of JavaScript.
- 
+![image](/assets/Screenshot.png)
+
 Features of this website:
  
 1. The timed test begins when the student selects the start button.
@@ -24,6 +25,6 @@ elizabethdberube@gmail.com
 Link to page: 
 https://elizabethdberube.github.io/Coding-Quiz/
 
-![image](/assets/Screenshot.png)
+
 ![image](/assets/Screenshot2.png)
 
