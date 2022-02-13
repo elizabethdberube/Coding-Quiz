@@ -1,5 +1,5 @@
 # Coding-Quiz
-Website for testing students' knowledge of JavaScript.
+Website for testing student's knowledge of JavaScript. This is a timed multiple choice quiz. 
 ![image](/assets/Screenshot.png)
 
 Features of this website:
