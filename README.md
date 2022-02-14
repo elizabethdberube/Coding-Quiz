@@ -17,7 +17,7 @@ List of technologies used:
 3. CSS
 
 Contact information:
-Email:
+Elizabeth Berube
 elizabethdberube@gmail.com
 
 Link to page: 
