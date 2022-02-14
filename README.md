@@ -1,4 +1,4 @@
-# Coding-Quiz
+# Coding Quiz
 Website for testing student's knowledge of JavaScript. This is a timed multiple choice quiz. 
 ![image](/assets/Screenshot.png)
 
