@@ -17,8 +17,6 @@ List of technologies used:
 3. CSS
 
 Contact information:
-Phone Number:
-603-860-2579
 Email:
 elizabethdberube@gmail.com
 
